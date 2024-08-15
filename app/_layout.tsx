@@ -1,5 +1,5 @@
 import { Tabs } from "expo-router";
-import { theme } from "../theme";
+import { theme } from "@/theme";
 import { Entypo, Feather } from "@expo/vector-icons";
 
 export default function Layout() {
