@@ -1,10 +1,4 @@
-import {
-  StyleSheet,
-  Image,
-  useWindowDimensions,
-  View,
-  Text,
-} from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { theme } from "@/theme";
 import { useUserStore } from "@/store/userStore";
 import { useRouter } from "expo-router";
@@ -24,16 +18,16 @@ export default function OnboardingScreen() {
 
   return (
     <LinearGradient
+      style={styles.container}
       start={{ x: 0, y: 0 }}
       end={{ x: 1, y: 1 }}
       colors={[theme.colorGreen, theme.colorAppleGreen, theme.colorLimeGreen]}
-      style={styles.container}
     >
+      <StatusBar style="light" />
       <View>
         <Text style={styles.heading}>Plantly</Text>
         <Text style={styles.tagline}>Keep Your Plants Happy and Hydrated</Text>
       </View>
-      <StatusBar style="light" />
       <PlantlyImage />
       <PlantlyButton title="Let me in!" onPress={handlePress} />
     </LinearGradient>

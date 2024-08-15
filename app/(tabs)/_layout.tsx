@@ -1,16 +1,14 @@
+import { Redirect, Tabs } from "expo-router";
+import Entypo from "@expo/vector-icons/Entypo";
+import Feather from "@expo/vector-icons/Feather";
 import { theme } from "@/theme";
-import { Entypo, Feather } from "@expo/vector-icons";
-import { Redirect, Tabs, Link } from "expo-router";
-import AntDesign from "@expo/vector-icons/AntDesign";
-import { Pressable } from "react-native";
-
 import { useUserStore } from "@/store/userStore";
 
 export default function Layout() {
   const hasFinishedOnboarding = useUserStore(
-    // eslint-disable-next-line prettier/prettier
     (state) => state.hasFinishedOnboarding
   );
+
   if (!hasFinishedOnboarding) {
     return <Redirect href="/onboarding" />;
   }
@@ -18,24 +16,14 @@ export default function Layout() {
   return (
     <Tabs screenOptions={{ tabBarActiveTintColor: theme.colorGreen }}>
       <Tabs.Screen
-        name="index"
+        name="(home)"
         options={{
           title: "Home",
           tabBarShowLabel: false,
-          tabBarIcon: ({ color, size }) => (
+          tabBarIcon: ({ size, color }) => (
             <Entypo name="leaf" size={size} color={color} />
           ),
-          headerRight: () => (
-            <Link href="/new" asChild>
-              <Pressable hitSlop={20} style={{ marginRight: 18 }}>
-                <AntDesign
-                  name="pluscircleo"
-                  size={24}
-                  color={theme.colorGreen}
-                />
-              </Pressable>
-            </Link>
-          ),
+          headerShown: false,
         }}
       />
       <Tabs.Screen
@@ -43,7 +31,7 @@ export default function Layout() {
         options={{
           title: "Profile",
           tabBarShowLabel: false,
-          tabBarIcon: ({ color, size }) => (
+          tabBarIcon: ({ size, color }) => (
             <Feather name="user" size={size} color={color} />
           ),
         }}

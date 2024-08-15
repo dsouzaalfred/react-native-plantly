@@ -14,6 +14,7 @@ export function PlantlyButton({ title, onPress }: Props) {
     }
     onPress();
   };
+
   return (
     <Pressable
       onPress={handlePressed}
